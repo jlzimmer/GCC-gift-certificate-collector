@@ -42,14 +42,5 @@
 
             $this->read();
         }
-
-        function viewTransactions() {
-            $mysqli->query("SELECT transactions.balanceDelta, transactions.date 
-            FROM transactions, certificards
-            WHERE certificards.id = transactions.cardId && certificards.id = $cardid
-            ORDER BY transactions.date DESC");
-
-            $this->read();
-        }
     }
 ?>
