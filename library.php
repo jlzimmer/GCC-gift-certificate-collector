@@ -10,10 +10,7 @@
 <body>
 
 <?php 
-    $server = "sql201.epizy.com";
-    $username = "epiz_21504263";
-    $password = "Wally567";
-    $dbname = "epiz_21504263_giftcardtesting";
+
 
 $mysqli = mysqli_connect("$server", "$username", "$password", "$dbname")or die("cannot connect");
 
