@@ -4,9 +4,10 @@
     $password = "Mizzou_CS3380_SP18";
     $dbname = "gift_card_collector";
 
-    $mysql = new mysqli($server, $username, $password, $dbname);
+    $mysqli = new mysqli($server, $username, $password, $dbname);
 
-    if ($mysql->connect_error) {
+    if ($mysqli->connect_error) {
+        $_SESSION['user'] = null;
         header("Location: ../index.php?result=failedSQLconnection");
         exit;
     }
