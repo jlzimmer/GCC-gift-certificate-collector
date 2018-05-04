@@ -1,3 +1,17 @@
+.btn li {
+  margin: 2px;
+  padding: 2px;
+}
+
+#wrapper {
+  margin-top: 40px;
+  align-content: center;
+}
+
+#login {
+  margin-right: 10px;
+}
+
 /* Generated with: https://work.smarchal.com/twbscolor/4.0.0/css/404040e3b70eecf0f10000001 */
 
 .navbar {
@@ -143,7 +157,10 @@
   background-color: #e3b70e;
 }
 
-  .btn li {
-    margin: 2px;
-    padding: 2px;
-  }
+.lobster {
+  font-family: 'Lobster', cursive;
+}
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
+}

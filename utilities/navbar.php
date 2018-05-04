@@ -8,44 +8,32 @@
 
         <!-- Boostrap 4.0 CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway:300" rel="stylesheet">
         <link rel="stylesheet" href="utilities/navbar.css">
-
-        <style>
-            #wrapper {
-                margin-top: 40px;
-                align-content: center;
-            }
-
-            #login {
-                margin-right: 10px;
-            }
-        </style>
     </head>
 
     <body>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-sm navbar-fixed-top">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.php">GCC - Gift Card Collector</a>
+                    <a class="navbar-brand lobster" href="index.php">GCC - Gift Card Collector</a>
                 </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav mr-auto">
-                        <?php
-                            $loggedIn = empty($_SESSION['user']) ? false : true;
+                <ul class="nav navbar-nav mr-auto">
+                    <?php
+                        $loggedIn = empty($_SESSION['user']) ? false : true;
 
-                            if ($loggedIn)
-                            {
-                                echo '<li id="login"><button class="btn btn-danger navbar-btn" type="button" onclick="location.href=\'utilities/logout.php\'">Log Out</button></li>';
-                            }
-                            else 
-                            {
-                                echo '<li id="signup"><button data-toggle="modal" data-target="#signupModal" class="btn btn-info navbar-btn">Sign Up</button></li>';
-                                echo '<li id="login"><button data-toggle="modal" data-target="#loginModal" class="btn btn-success navbar-btn">Log In</button></li>';
-                            }
-                        ?>
-                    </ul>
-                </div>
+                        if ($loggedIn)
+                        {
+                            echo '<li class="nav-item raleway" id="login"><button class="btn btn-danger navbar-btn" type="button" onclick="location.href=\'utilities/logout.php\'">Log Out</button></li>';
+                        }
+                        else 
+                        {
+                            echo '<li class="nav-item raleway" id="signup"><button data-toggle="modal" data-target="#signupModal" class="btn btn-info navbar-btn">Sign Up</button></li>';
+                            echo '<li class="nav-item raleway" id="login"><button data-toggle="modal" data-target="#loginModal" class="btn btn-success navbar-btn">Log In</button></li>';
+                        }
+                    ?>
+                </ul>
             </div>
         </nav>
 
