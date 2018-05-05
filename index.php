@@ -1,12 +1,22 @@
 <?php
-    include("utilities/navbar.php");
+    require 'utilities/navbar.php';
 ?>
-
-        
-
-        <!-- jQuery, Popper.js, Boostrap 4.0 JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <div class="container" id="wrapper">
+            <div class="jumbotron">
+                <h2 class="lobster">
+                    <?php
+                        $login = empty($_SESSION['userID']) ? false : $_SESSION['userID'];
+	
+                        if ($login) {
+                            echo 'You are logged in. Please select the "Wallet" tab from the navigation bar.';
+                        }
+                        
+                        else {
+                            echo 'You are NOT logged in. Please select log in or sign up from the navigation bar.';
+                        }
+                    ?>
+                </h2>
+            </div>
+        </div>
     </body>
 </html>

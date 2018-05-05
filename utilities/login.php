@@ -7,7 +7,8 @@
 	$login = empty($_SESSION['userID']) ? false : $_SESSION['userID'];
 	
 	if ($login) {
-        header("Location: ../library.php?result=loggedIn");
+        $append = $_SESSION['user'];
+        header("Location: ../library.php?result=loggedIn&user=$append");
 		exit;
 	}
 
@@ -16,8 +17,8 @@
     }
 	
     function handle_login() {        
-        $username = empty($_POST['Username']) ? '' : $_POST['Username'];
-        $password = empty($_POST['Password']) ? '' : $_POST['Password'];
+        $username = empty($_POST['username']) ? '' : $_POST['username'];
+        $password = empty($_POST['password']) ? '' : $_POST['password'];
 
             if (empty($username) || empty($password)) {
                 header("Location: ../index.php?result=emptyField");
@@ -28,25 +29,23 @@
 
         $username = $mysqli->real_escape_string($username);
         $password = $mysqli->real_escape_string($password);
-        $password = password_hash($password, PASSWORD_DEFAULT);
         
-		$query = "SELECT * FROM Users WHERE name = '$username' AND password = '$password'";
-		$result = $mysqli->query($query);
+		$query = "SELECT * FROM users WHERE name = '$username'";
+        $result = $mysqli->query($query);
 		
-        if ($result) {
-            $match = $result->num_rows;
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
 
-  		    if ($match == 1) {
-                session_start();
-                $row = $result->fetch_assoc();
+  		    if (password_verify($password, $row['password'])) {
                 $_SESSION['userID'] = $row['id'];
-                header("Location: ../library.php?result=loggedIn");
+                $_SESSION['user'] = $row['name'];
+                $append = $_SESSION['user'];
+                header("Location: ../library.php?result=loggedIn&user=$append");
                 exit;
             }
 
             else {
-                $error = 'Error: Incorrect username or password';
-                header("Location: ../index.php?result=badInfo");
+                header("Location: ../index.php?result=incorrectPassword");
                 exit;
             }
         }

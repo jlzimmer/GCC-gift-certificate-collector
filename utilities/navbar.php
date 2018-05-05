@@ -1,3 +1,10 @@
+<?php
+    if(!session_start()) {
+        header("Location: ../index.php?result=badSession");
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,6 +17,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway:300" rel="stylesheet">
         <link rel="stylesheet" href="utilities/navbar.css">
+
+        <!-- jQuery, Popper.js, Boostrap 4.0 JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </head>
 
     <body>
@@ -21,16 +33,18 @@
                 </div>
                 <ul class="nav navbar-nav mr-auto">
                     <?php
-                        $loggedIn = empty($_SESSION['user']) ? false : true;
+                        $loggedIn = empty($_SESSION['userID']) ? false : true;
 
                         if ($loggedIn)
                         {
-                            echo '<li class="nav-item raleway" id="login"><button class="btn btn-danger navbar-btn" type="button" onclick="location.href=\'utilities/logout.php\'">Log Out</button></li>';
+                            $append = $_SESSION['user'];
+                            echo '<li class="nav-item raleway" id="login"><button class="btn btn-info navbar-btn" type="button" onclick="location.href=\'library.php?result=loggedIn\'">Wallet</button></li>';
+                            echo '<li class="nav-item raleway" id="logout"><button class="btn btn-danger navbar-btn" type="button" onclick="location.href=\'utilities/logout.php\'">Log Out</button></li>';
                         }
                         else 
                         {
-                            echo '<li class="nav-item raleway" id="signup"><button data-toggle="modal" data-target="#signupModal" class="btn btn-info navbar-btn">Sign Up</button></li>';
-                            echo '<li class="nav-item raleway" id="login"><button data-toggle="modal" data-target="#loginModal" class="btn btn-success navbar-btn">Log In</button></li>';
+                            echo '<li class="nav-item raleway" id="signup"><button class="btn btn-info navbar-btn" data-toggle="modal" data-target="#signupModal" type="button">Sign Up</button></li>';
+                            echo '<li class="nav-item raleway" id="login"><button class="btn btn-success navbar-btn" data-toggle="modal" data-target="#loginModal" type="button">Log In</button></li>';
                         }
                     ?>
                 </ul>
@@ -39,7 +53,6 @@
 
         <!--
             Modal Fade login
-            sourced from: https://bootsnipp.com/snippets/featured/squarespace-like-modal
         -->
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
             <div class="modal-dialog">
