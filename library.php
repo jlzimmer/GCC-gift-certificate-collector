@@ -31,7 +31,7 @@
                 ?>
             </div>
             <table class="table">
-                <tr>
+                <tr class="raleway">
                     <th>Card ID</th>
                     <th>Business</th>
                     <th>Balance</th>
