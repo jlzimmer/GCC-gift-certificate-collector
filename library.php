@@ -8,10 +8,10 @@
         <div class="container" id="wrapper">
             <div class="jumbotron">
                 <?php
-                    $loggedIn = empty($_SESSION['userID']) ? false : true;
+                    $login = empty($_SESSION['userID']) ? false : true;
 
-                    if ($loggedIn) {
-                        echo '<h2 class="lobster">Wallet for ' . $user . ' (ID #' . $userid . ')</h2>';
+                    if ($login) {
+                        echo '<h2 class="lobster">Wallet for ' . $user . ' (ID #' . $userid . ')</h2></div>';
 
                         switch ($_SESSION['add']) {
                             case 1:
@@ -25,11 +25,10 @@
                         $_SESSION['add'] = 0;
                     }
                     else {
-                        echo '<h2 class="lobster">You are NOT logged in. Please select log in or sign up from the navigation bar.</h2>';
+                        echo '<h2 class="lobster">You are NOT logged in. Please select log in or sign up from the navigation bar.</h2></div>';
                         exit;
                     }
                 ?>
-            </div>
             <table class="table">
                 <tr class="raleway">
                     <th>Card ID</th>

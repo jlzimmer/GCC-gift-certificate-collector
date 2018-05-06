@@ -33,9 +33,9 @@
                 </div>
                 <ul class="nav navbar-nav mr-auto">
                     <?php
-                        $loggedIn = empty($_SESSION['userID']) ? false : true;
+                        $login = empty($_SESSION['userID']) ? false : true;
 
-                        if ($loggedIn){
+                        if ($login){
                             echo '<li class="nav-item raleway" id="login"><button class="btn btn-info navbar-btn" type="button" onclick="location.href=\'library.php?result=loggedIn&user=' . $_SESSION['user'] . '\'">Wallet</button></li>';
                             echo '<li class="nav-item raleway" id="login"><button class="btn btn-secondary navbar-btn" type="button" onclick="location.href=\'newcard.php\'">Add Card</button></li>';
                             echo '<li class="nav-item raleway" id="login"><button class="btn btn-danger navbar-btn" type="button" onclick="location.href=\'utilities/logout.php\'">Log Out</button></li>';
