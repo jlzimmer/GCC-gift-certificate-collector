@@ -6,7 +6,7 @@
 
     $login = empty($_SESSION['userID']) ? false : $_SESSION['userID'];
 	
-	if ($login == false) {
+	if ($login === false) {
         header("Location: ../index.php?result=sessionError");
 		exit;
 	}
@@ -41,17 +41,19 @@
         $expiration = date('Y-m-d', strtotime(str_replace('-', '/', $expiration)));
         // https://stackoverflow.com/questions/6790930/convert-php-date-to-mysql-format
 
-        $query = "INSERT INTO certificards (location, balance, serial, dateAdded, expiration, owner) VALUES ('$location', $balance, '$serial', NOW(), '$expiration', $login)";
+        $login = $_SESSION['userID'];
+        $result1 = $mysqli->query("INSERT INTO certificards (location, balance, serial, dateAdded, expiration, owner) VALUES ('$location', $balance, '$serial', NOW(), '$expiration', $login)");
+        $result2 = $mysqli->query("INSERT INTO transactions (cardId, balanceDelta, date) VALUES (last_insert_id(), $balance, NOW())");
         
-        if ($mysqli->query($query) === true) {
+        if ($result1 === true && $result2 === true) {
             $_SESSION['add'] = 1;
-            $result->free();
             $mysqli->close();
             $append = $_SESSION['user'];
             header("Location: ../library.php?result=loggedIn&user=$append");
             exit;
         }
         else {
+            $mysqli->close();
             $_SESSION['add'] = 2;
             header("Location: ../library.php?result=SQLerrorContactAdmin");
             exit;

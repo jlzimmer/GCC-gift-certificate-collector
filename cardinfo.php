@@ -19,19 +19,21 @@
                         exit;
                     }
                 ?>
-            <table class="table">
-                <tr class="raleway">
-                    <th>Transaction ID</th>
-                    <th>Δ Balance</th>
-                    <th>Date/Time</th>
-                </tr>
-                <?php
-                    $card = new Card($cardid);
-                    $table = $card->read();
+            <div class="table-responsive-lg">
+                <table class="table">
+                    <tr class="raleway">
+                        <th>Transaction ID</th>
+                        <th>Δ Balance</th>
+                        <th>Date/Time</th>
+                    </tr>
+                    <?php
+                        $card = new Card($cardid);
+                        $table = $card->read();
 
-                    echo $table;
-                ?>
-            </table>
+                        echo $table;
+                    ?>
+                </table>
+            </div>
         </div>
     </body>
 </html>

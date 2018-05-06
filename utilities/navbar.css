@@ -3,16 +3,6 @@
   padding: 2px;
 }
 
-#wrapper {
-  margin-top: 40px;
-  align-content: center;
-}
-
-#login {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
 .lobster {
   font-family: 'Lobster', cursive;
 }
@@ -23,6 +13,16 @@
 
 .jumbotron, th {
   background-color: #f1b82d;
+}
+
+#wrapper {
+  margin-top: 5px;
+  align-content: center;
+}
+
+#login {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 /* Generated with: https://work.smarchal.com/twbscolor/4.0.0/css/404040f1b82decf0f10000001 */

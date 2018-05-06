@@ -37,28 +37,37 @@
         }
 
         function update($delta) {
-            $balance = $mysqli->query("SELECT balance FROM certificards WHERE id = $cardid");
+            $balance = $this->mysqli->query("SELECT balance FROM certificards WHERE id = $this->cardid");
             $newbalance = $balance - $delta;
 
             if ($newbalance <= 0) {
                 $this->delete();
-                $mysqli->close();
-                header("Location: ../wallet.php?result=zeroBalance");
-                exit();
+                header("Location: ../library.php?result=zeroBalance");
+                exit;
             }
 
-            if ($mysqli->query("UPDATE certificards SET balance = $newbalance WHERE id = $cardid") === true) {
-                $mysqli->query("INSERT INTO transactions (cardId, balanceDelta, date) VALUES ($cardid, $delta, NOW())");
+            if ($this->mysqli->query("UPDATE certificards SET balance = $newbalance WHERE id = $this->cardid") === true) {
+                $this->mysqli->query("INSERT INTO transactions (cardId, balanceDelta, date) VALUES ($this->cardid, $delta, NOW())");
             }
 
             $this->read();
         }
 
         function delete() {
-            $mysqli->query("DELETE FROM certificards WHERE id = $cardid");
-            $mysqli->query("DELETE FROM transactions WHERE cardId = $cardid");
+            $mysqli->begin_transaction(MYSQLI_TRANS_START_READ_ONLY);
+            $mysqli->query("DELETE FROM certificards WHERE id = $this->cardid");
+            $mysqli->query("DELETE FROM transactions WHERE cardId = $this->cardid");
+                if (!$mysqli->commit()) {
+                    $_SESSION['add'] = 4;
+                    $append = $_SESSION['user'];
+                    header("Location: ../library.php?result=loggedIn&user=$append");
+                    exit;
+                }
 
-            $this->read();
+            $_SESSION['add'] = 5;
+            $append = $_SESSION['user'];
+            header("Location: ../library.php?result=loggedIn&user=$append");
+            exit;
         }
     }
 ?>

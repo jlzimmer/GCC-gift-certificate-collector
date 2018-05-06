@@ -20,6 +20,12 @@
                             case 2:
                                 echo '<div class="alert alert-danger alert-dismissible fade show raleway"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong> Something went wrong when adding your card.</div>';
                                 break;
+                            case 4:
+                                echo '<div class="alert alert-danger alert-dismissible fade show raleway"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong> Something went wrong when updating/deleting your card.</div>';
+                                break;
+                            case 5:
+                                echo '<div class="alert alert-success alert-dismissible fade show raleway"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Success!</strong> That card has been deleted from your wallet.</div>';
+                                break;
                         }
     
                         $_SESSION['add'] = 0;
@@ -29,22 +35,24 @@
                         exit;
                     }
                 ?>
-            <table class="table">
-                <tr class="raleway">
-                    <th>Card ID</th>
-                    <th>Business</th>
-                    <th>Balance</th>
-                    <th>Expiration</th>
-                    <th>Serial</th>
-                    <th>Transaction History</th>
-                </tr>
-                <?php
-                    $wallet = new Wallet($userid);
-                    $table = $wallet->fetchWallet();
+            <div class="table-responsive-lg table-striped">
+                <table class="table">
+                    <tr class="raleway">
+                        <th>Card ID</th>
+                        <th>Business</th>
+                        <th>Balance</th>
+                        <th>Expiration</th>
+                        <th>Serial</th>
+                        <th>Transaction History</th>
+                    </tr>
+                    <?php
+                        $wallet = new Wallet($userid);
+                        $table = $wallet->fetchWallet();
 
-                    echo $table;
-                ?>
-            </table>
+                        echo $table;
+                    ?>
+                </table>
+            </div>
         </div>
     </body>
 </html>
