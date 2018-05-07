@@ -35,7 +35,7 @@
                     <?php
                         $login = empty($_SESSION['userID']) ? false : true;
 
-                        if ($login){
+                        if ($login) {
                             echo '<li class="nav-item raleway" id="login"><button class="btn btn-outline-info navbar-btn" type="button" onclick="location.href=\'library.php?result=loggedIn&user=' . $_SESSION['user'] . '\'">Wallet</button></li>';
                             echo '<li class="nav-item raleway" id="login"><button class="btn btn-outline-secondary navbar-btn" type="button" onclick="location.href=\'newcard.php\'">Add Card</button></li>';
                             echo '<li class="nav-item raleway" id="login"><button class="btn btn-outline-danger navbar-btn" type="button" onclick="location.href=\'utilities/logout.php\'">Log Out</button></li>';

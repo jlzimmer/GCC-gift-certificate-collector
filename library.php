@@ -55,7 +55,7 @@
                         echo $table;
                     ?>
                 </table>
-            </div>
+
         </div>
     </body>
 </html>

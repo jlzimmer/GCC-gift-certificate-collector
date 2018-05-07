@@ -15,8 +15,10 @@
         }
 
         function fetchWallet() {
+
             $query = "SELECT * FROM certificards WHERE owner = '$this->userid'";
             $result = $this->mysqli->query($query);
+
             $data = array();
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
@@ -31,6 +33,7 @@
                     $balance = $card['balance'];
                     $serial = $card['serial'];
                     $expiration = $card['expiration'];
+
                     $table .= "<tr><td>$id</td><td>$location</td><td>$balance</td><td>$expiration</td><td>$serial</td><td><form action='cardinfo.php' method='POST'><input type='hidden' name='cardID' value='$id'><input type='hidden' name='balance' value='$balance'><button class='btn btn-outline-warning raleway' type='submit'>View Transactions</button></form></td></tr>
                     ";
                 }
