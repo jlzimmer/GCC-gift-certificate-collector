@@ -20,6 +20,9 @@
                             case 2:
                                 echo '<div class="alert alert-danger alert-dismissible fade show raleway"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong> Something went wrong when adding your card.</div>';
                                 break;
+                            case 3:
+                                echo '<div class="alert alert-success alert-dismissible fade show raleway"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Success!</strong> Card balance has been updated.</div>';
+                                break;
                             case 4:
                                 echo '<div class="alert alert-danger alert-dismissible fade show raleway"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong> Something went wrong when updating/deleting your card.</div>';
                                 break;

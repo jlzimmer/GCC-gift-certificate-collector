@@ -31,7 +31,7 @@
                     $balance = $card['balance'];
                     $serial = $card['serial'];
                     $expiration = $card['expiration'];
-                    $table .= "<tr><td>$id</td><td>$location</td><td>$balance</td><td>$expiration</td><td>$serial</td><td><form action='cardinfo.php' method='POST'><input type='hidden' name='cardID' value='$id'><button class='btn btn-outline-warning raleway' type='submit'>View Transactions</button></form></td></tr>
+                    $table .= "<tr><td>$id</td><td>$location</td><td>$balance</td><td>$expiration</td><td>$serial</td><td><form action='cardinfo.php' method='POST'><input type='hidden' name='cardID' value='$id'><input type='hidden' name='balance' value='$balance'><button class='btn btn-outline-warning raleway' type='submit'>View Transactions</button></form></td></tr>
                     ";
                 }
 
